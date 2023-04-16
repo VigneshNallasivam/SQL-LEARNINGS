@@ -1,0 +1,31 @@
+//SQL DATA-TYPES
+
+
+
+                                                     SQL DATA-TYPES
+													 ==============
+- There are 9 different types of data-types 
+Namely,
+1) Numeric Data Types
+2) Date and Time Data Types
+3) String Data Types
+4) Spatial Data Types
+5) The JSON Data Type
+6) Data Type Default Values
+7) Data Type Storage Requirements
+8) Choosing the Right Type for a Column
+9) Using Data Types from Other Database Engines
+
+#1-NUMERIC DATA-TYPES:-
+-----------------------
+INTEGER TYPE:
+=============
+1)TINYINT     =>It takes 1 byte for storage.
+2)SMALLINT    =>It takes 2 byte for storage.
+3)MEDIUMINT   =>It takes 3 byte for storage.
+4)INT         =>It takes 4 byte for storage.
+5)BIGINT      =>It takes 8 byte for storage.
+FLOATING TYPE:
+==============
+1)FLOAT      
+2)DOUBLE

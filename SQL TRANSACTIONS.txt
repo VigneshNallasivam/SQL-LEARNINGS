@@ -1,0 +1,52 @@
+//SQL TRANSACTION
+
+
+
+                                                     SQL TRANSACTION
+													 ===============
+- A SQL transaction is a grouping of one or more SQL statements that interact with a database. 
+- A transaction in its entirety can commit to a database as a single logical unit or rollback (become undone) as a single logical unit.
+- In SQL, transactions are essential for maintaining database integrity.
+- A transaction in SQL Server is a sequential group of statements or queries to perform single or multiple tasks in a database. 
+
+   
+                                __________>>TRANSACTION (Succeeded)
+                               /
+                       Commit /
+                             /
+    [.]------->[TRANSACTION]/
+   INITIAL                  \
+    STATE                    \
+	                 Rollback \
+							   \__________
+							              >>TRANSACTION (Failed)
+										  
+D.R.Y(Dont Repeat yourself) Principle:-
+---------------------------------------
+- It is a Software developement Principle.
+- Aim :
+     =>To reduce Repitative Patterns.
+	 =>To reduce Duplicate Codes.
+	 =>To reduce redundancy in program.
+	
+W.E.T(Write Everything Twice):-
+-------------------------------
+- Opposite of DRY Principle.
+- Wet code typically involves repeated writing of same code throughout the project.
+- whereas dry code would represent the repeated reference of that code.
+
+Good Rule of Thumb is "The Rule of Three":-
+-------------------------------------------
+-States that third time when you encounter the certain pattern,we should propable abstract that into some reusable unit. 
+										  
+PROPERTIES OF TRANSACTION:-(ACID)
+---------------------------------
+ATOMICITY =>Ensures that all statements or operations included in the transaction must be performed successfully.
+            Otherwise, the whole transaction will be aborted
+			And all operations are rolled back into their previous state when any operation is failed.
+CONSISTENCY =>Ensures that the database changes state only when a transaction will be committed successfully.
+              It is also responsible for protecting data from crashes. 
+ISOLATION =>Guarantees that all transactions are isolated from other transactions.
+            Here,each operation in the transaction is operated independently.
+			It also ensures that statements are transparent to each other.
+DURABILITY =>Guarantees that the result of committed transactions persists in the database permanently even if the system crashes or failed.

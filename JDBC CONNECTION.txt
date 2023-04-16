@@ -1,0 +1,189 @@
+//JAVA DATA-BASE CONNECTION(JDBC)
+
+
+                                     JAVA DATA-BASE CONNECTION(JDBC)
+									 ===============================
+- Connecting of Java(Eclipse) to Database(MySql)
+
+DRIVER:
+=======
+- JDBC Driver is a software component that enables java application to interact with the database.
+- There are 4 types of JDBC drivers: 
+  1)JDBC-ODBC bridge driver
+  2)Native-API driver (partially java driver)
+  3)Network Protocol driver (fully java driver)
+  4)Thin driver (fully java driver)
+  
+DRIVER-MANAGER:
+===============
+- The DriverManager class is the component of JDBC API.
+- Also a member of the java.sql package.
+- The DriverManager class acts as an interface between users and drivers.
+- It keeps track of the drivers that are available 
+  and handles establishing a connection between a database and the appropriate driver.
+- The DriverManager class maintains a list of Driver classes 
+  that have registered themselves by calling the method DriverManager.registerDriver().
+- Note that before interacting with a Database, 
+  it is a mandatory process to register the driver; otherwise, an exception is thrown. 
+  
+CONNECTION:
+===========
+- A Connection is a session between a Java application and a database. 
+- It helps to establish a connection with the database.
+- The Connection interface is a factory of
+                                     => Statement
+                      			     => PreparedStatement
+									 => CreateStatement
+									 => Data-Base Meta-Data.
+- The Connection interface provide many methods for transaction management like 
+                                                                           => commit()
+																		   => rollback()
+																		   => setAutoCommit()
+																		   => setTransactionIsolation(), etc.
+																		   
+STATEMENT:
+==========
+- The Statement interface provides methods to execute queries with the database.
+- The statement interface is a factory of 
+                                     => ResultSet
+									 => PreparedStatement
+- Commonly used Methods:-
+  1) public ResultSet executeQuery(String sql) : is used to execute SELECT query. It returns the object of ResultSet.
+  2) public int executeUpdate(String sql) : is used to execute specified query, it may be create, drop, insert, update, delete etc.
+  3) public boolean execute(String sql) : is used to execute queries that may return multiple results.
+  4) public int[] executeBatch() : is used to execute batch of commands.
+
+PREPARED-STATEMENT:
+===================
+- The PreparedStatement interface is a subinterface of Statement.
+- It is used to execute parameterized query. 
+- Improves performance: 
+  The performance of the application will be faster if you use PreparedStatement interface because query is compiled only once.
+- Methods:-
+  =>setInt()
+  =>setString()
+  =>setFloat()
+  =>setFloat()
+  =>public int executeUpdate()
+  =>public ResultSet executeQuery()  
+  
+RESULT-SET:
+===========
+- It is an Interface.
+- The object of ResultSet maintains a cursor pointing to a row of a table. 
+- Initially, cursor points to before the first row.
+- By default, ResultSet object can be moved forward only and it is not updatable.
+- Methods:-
+  => public boolean next(): is used to move the cursor to the one row next from the current position.
+  => public boolean previous(): is used to move the cursor to the one row previous from the current position.
+  => public boolean first(): is used to move the cursor to the first row in result set object.
+  => public boolean last():	is used to move the cursor to the last row in result set object.
+  => public boolean absolute(int row): is used to move the cursor to the specified row number in the ResultSet object.
+  => public boolean relative(int row): is used to move the cursor to the relative row number in the ResultSet object, it may be positive or negative.
+  => public int getInt(int columnIndex): is used to return the data of specified column index of the current row as int.
+  => public int getInt(String columnName): is used to return the data of specified column name of the current row as int.
+  => public String getString(int columnIndex): is used to return the data of specified column index of the current row as String.
+  => public String getString(String columnName): is used to return the data of specified column name of the current row as String.
+
+
+SQLException:
+=============
+- An SQLException can occur both in the driver and the database.
+- When such an exception occurs, an object of type SQLException will be passed to the catch clause.
+- 
+DEPENDENCIES FOR JDBC :-
+------------------------
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-jdbc</artifactId>
+        <version>5.3.23</version>
+    </dependency>
+   
+    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.28</version>
+    </dependency>
+	
+Example:-
+---------
+//METHOD-1
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+public class JDBCDemo 
+{
+    public static void main(String[] args) 
+	{
+     try
+       {
+         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/employee","root","root");
+         Statement statement = connection.createStatement();
+         statement.execute("insert into person values(222,'Ram','ram@gmail.com');");
+         statement.execute("update person set name='Ravi' where id=222;");
+         statement.execute("delete from person where id=222;");
+         ResultSet result = statement.executeQuery("select * from person where id=222;");
+         while(result.next())
+          {
+            System.out.println("Id: "+result.getInt(1));
+            System.out.println("Name: "+result.getString(2));
+            System.out.println("Email: "+result.getString(3));
+          }
+        }
+        catch (SQLException e)
+        {
+           
+            e.printStackTrace();
+        }
+    }
+}
+
+Example:-
+---------
+//METHOD-2
+package jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+public class JdbcDemo {
+
+    public static void main(String[] args) {
+        getData(4);
+    }
+
+    public static void getData(int userid) {
+        String dbUrl = "jdbc:mysql://localhost:3306/sourabh";
+        String username = "root";
+        String password = "root123";
+
+        try {
+            Connection connection = DriverManager.getConnection(dbUrl, username, password);
+
+            String query = "insert into user (user_id,username,password) values (?,?,?)";
+            PreparedStatement prep = connection.prepareStatement(query);
+            prep.setInt(1, 6);
+            prep.setString(2, "ABC");
+            prep.setString(3, "XYZ");
+            prep.executeUpdate();
+
+            PreparedStatement prep = connection.prepareStatement("select * from user where user_id = ?");
+            prep.setInt(1, userid);
+            ResultSet resultSet = prep.executeQuery();
+            while (resultSet.next()) {
+                System.out.println(resultSet.getString("user_id"));
+                System.out.println(resultSet.getString("username"));
+                System.out.println(resultSet.getString("password"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+

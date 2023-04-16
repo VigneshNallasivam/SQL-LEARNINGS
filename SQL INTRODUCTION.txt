@@ -1,0 +1,30 @@
+//INTRODUCTION TO SQL
+
+                                                              SQL(Structured Query Language)
+															  ==============================
+-SQL is a standard language for storing,manipulating and retrieving data in databases.
+-SQL is mainly used for DATA-BASE Management.
+-SQL is supported by all databases like Oracle, Postgres, MYSQL etc.
+
+DATABASE ==> A database is an organized collection of data, which can be easily accessed and managed / Collection of Related Tables.
+TABLE    ==> Table is a collection of data, organized in terms of rows and columns. 
+QUERIES  ==> A query is a request for data or information from a database table./ A select query is one that retrieves data from a database.
+
+HISTORY:
+========
+- MySQL was created by a Swedish company, MySQL AB
+- Founded by Sweden David Axmark & Finland-Sweden Michael "Monty" Widenius
+- Name is a combination of "My",the name of co-founder Michael Widenius's daughter My and "SQL", the acronym for Structured Query Language
+- The first version of MySQL appeared on 23 May 1995.(Version 3.19 on end of 1996)
+- The Latest version of MySQL is version 8.0.31
+- Sun Microsystems acquired MySQL AB in 2008.
+- And Oracle acquired Sun Microsystems in 2010, So MySQL is developed, distributed, and supported by Oracle Corporation.
+
+MySQL:
+======
+- MySQL is a relational database management system (RDBMS) software developed by Oracle that is based on structured query language (SQL).
+- MySQL is the world's most popular open source database.
+- The MySQL Database Software is a client/server system 
+- MySQL consists of a multithreaded SQL server that supports different back ends, several different clients.
+- MySQL can be Operated in both MySQL Prompt Window & MySQL Workbench.
+

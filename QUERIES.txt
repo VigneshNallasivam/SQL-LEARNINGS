@@ -1,0 +1,95 @@
+//QUERIES
+
+
+
+                                                     QUERIES
+													 =======
+-clearing mysql prompot = 'system cls'
+PRIMARY KEY :-
+=============== 
+- A primary key is used to ensure data in the specific column is unique.
+- The table with the primary key is called the referenced or parent table.
+- Dont takes null values and duplicate values.
+FOREIGN KEY :-
+=============== 
+- A FOREIGN KEY is a field in one table, that refers to the PRIMARY KEY in another table.
+- The table with the foreign key is called the child table.
+- Takes null values and duplicate values.
+1)SHOW DATABASES:-
+------------------
+- Shows all databases present inside 
+- syntax : Show Databases;
+				   
+2)CREATE DATABASES:-
+--------------------
+- Creates database along with other databases
+- syntax : create database <database-name>;
+				   
+				   
+3)USE DATABASES:-
+-----------------
+- uses database
+- syntax : use database-name;
+				 
+4)CREATE TABLE:-
+----------------
+- creates table for making database
+- syntax : create table <table-name>(col-name datatype,col-name datatype.....);
+				
+5)INSERT:-
+----------
+- Inserts values into tables
+- syntax : insert into <table-name> values(value1,value2,....); 
+		 
+6)READ/RETIEVE:-
+----------------
+- Reads/shows the all the table values
+- syntax : select * from <table-name>;
+				
+7)UPDATE TABLE:-
+----------------
+- Used to modify rows of a table
+- syntax : Update <table-name> set <column-name>=<value> where column-name=<value>;
+ 
+8)DELETE:-
+----------
+- Used to delete rows of a table
+- syntax : delete from <table-name> where <column-name>=<value>;
+				   
+9)ALTER:-
+--------- 
+- Used to change/add columns in the table
+- syntax : alter table <table-name> add column-name data-type(size);
+
+
+11)DELETE COLUMN:-
+------------------
+- Deletes the column from the table
+- alter table <table-name> drop column <column-name>;
+
+
+12)DELETE TABLE:-
+-----------------
+- Deletes the table details and entire table from databases
+- syntax : =>drop table <table-name>;       //Deletes complete table from Database
+		   =>truncate table <table-name>;   //Deletes all records only in the table.
+          
+13)DELETE DATABASE:-
+--------------------
+- Deletes complete database along with all tables in it.
+- syntax : drop database <db-name>;
+
+14)SHOW TABLES:-
+----------------
+- shows the available tables in the currently using database.
+- syntax : show tables;
+				
+15)SHOW STARTS-WITH NAME:-
+--------------------------
+- shows the name in the table that starts with a particular character.
+- syntax : select <column-name> from <table-name> where <column-name> like '%h';
+
+16)SHOW ENDS-WITH NAME:-
+------------------------
+- shows the name in the table that ends with a particular character.
+- synatax : select <column-name> from <table-name> where <column-name> like 'h%';
